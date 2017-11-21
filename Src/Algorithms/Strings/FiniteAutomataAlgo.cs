@@ -1,4 +1,8 @@
-﻿namespace Algorithms.Strings
+﻿using System.Diagnostics;
+using System.Linq;
+using System.Text;
+
+namespace Algorithms.Strings
 {
     public class FiniteAutomataAlgo
     {
@@ -42,7 +46,14 @@
             int state, x;
             for (state = 0; state <= M; ++state)
                 for (x = 0; x < NO_OF_CHARS; ++x)
+                {
+                    if((state >= 5 && state <= 8 ) && x == 97)
+                    {
+                        int i = 0;
+                    }
                     TF[state, x] = getNextState(pat, M, state, x);
+                }
+                   
         }
 
         /* Prints all occurrences of pat in txt */
@@ -61,6 +72,8 @@
             int foundCount = 0;
 
             ComputeTF(pat, m, TF);
+            var abcArray = GetTransitionAbcArray(TF);
+
 
             // Process txt over FA.
             int i, state = 0;
@@ -80,6 +93,25 @@
                 result[i] = matches[i];
             }
             return result;
+        }
+
+        public string GetTransitionAbcArray(int[,] tFArray)
+        {
+            int length = tFArray.GetLength(0);
+            StringBuilder result = new StringBuilder();
+
+           // int[,] result = new int[length, 4];
+            for (int i = 0; i < length; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    result.Append($"\t{tFArray[i, j + 97]}");
+                }
+                result.AppendLine();
+            }
+            return result.ToString();
+
+
         }
     }
 }

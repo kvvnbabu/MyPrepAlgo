@@ -12,6 +12,18 @@ namespace AlgorithmsTest.Strings
         FiniteAutomataAlgo target = new FiniteAutomataAlgo();
 
         [TestMethod]
+        public void String_ExactMatch_FiniteAutomataAlgo_RandomText()
+        {
+            string str = "abacadaadabacadaabcaabaacabacadaab";
+            string pattern = "abacadaabc";
+            int[] expected = new[] { 9 };
+
+            int[] actual = target.SearchPattern(str, pattern);
+            CollectionAssert.AreEquivalent(expected, actual);
+        }
+
+
+        [TestMethod]
         public void String_ExactMatch_FiniteAutomataAlgo_StringContainsThePattern()
         {
             string str = "testmtestmtesttes";
