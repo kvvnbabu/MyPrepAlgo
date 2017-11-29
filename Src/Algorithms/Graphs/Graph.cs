@@ -118,11 +118,55 @@ namespace Algorithms.Graphs
 
     public class GraphAdjListWeighted
     {
-        public LinkedList<Tuple<int, int>>[] Edges { get; }
+        protected SortedSet<Edge>[] edges { get; }
+
+        protected int n;
+
+        public GraphAdjListWeighted(int size)
+        {
+            n = size;
+            edges = new SortedSet<Edge>[n];
+            for(int i = 0; i<n; i++)
+            {
+                edges[i] = new SortedSet<Edge>();
+            }
+        }
+
+        public bool AddEdge(int from, int to, int weight)
+        {
+            if(from >= 0 && from  < n && to >= 0 && to < n )
+            {
+                return edges[from].Add(new Edge { ToVertex = to, Weight = weight });
+            }
+            return false;
+        }
     }
 
-    public class GraphAdjMatrixUnWeighted
+    public struct Edge
     {
-        public int[][] Edges { get; }
+        public int ToVertex { get; set; }
+        public int Weight { get; set; }
+    }
+
+    public class GraphAdjMatrixWeighted
+    {
+        protected int n;
+        protected int[][] edges;
+
+        public GraphAdjMatrixWeighted(int size)
+        {
+            n = size;
+            edges = new int[n][];
+            for (int i = 0; i < n; i++) edges[i] = new int[n];
+        }
+
+        public void AddEdge(int from, int to, int weight)
+        {
+            if (from >= 0 && from < n && to >= 0 && to < n)
+            {
+                edges[from][to] = weight;
+                edges[to][from] = weight;
+            }
+        }
     }
 }
