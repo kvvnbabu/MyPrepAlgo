@@ -5,7 +5,7 @@ using System.Text;
 namespace Algorithms.Graphs
 {
 
-    public interface IGraph
+    public interface IGraph1
     {
         void AddEdge(int from, int to);
 
@@ -18,7 +18,7 @@ namespace Algorithms.Graphs
         void DFS();
     }
 
-    public class GraphAdjListUnWeighted : IGraph
+    public class GraphAdjListUnWeighted : IGraph1
     {
         protected SortedSet<int>[] edges { get; }
 

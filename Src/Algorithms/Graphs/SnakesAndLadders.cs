@@ -14,7 +14,7 @@ namespace Algorithms.Graphs
         }
         public int GetMinDiceRotations(Dictionary<int, int> laddersAndSnakes)
         {
-            IGraph graph = new GraphAdjListUnWeighted(size);
+            IGraph1 graph = new GraphAdjListUnWeighted(size);
 
             for(int i = 0; i < size; i++)
             {

@@ -1,6 +1,7 @@
 ﻿using Algorithms.Graphs;
 using System;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 
 namespace ConsoleApp
 {
@@ -110,17 +111,46 @@ namespace ConsoleApp
             //KnightsTourProblem.GetRoute(8);
 
             // Rats maze problem
-            int[,] maze = new[,] {
-                { 1, 0, 0, 0 },
-                { 1, 1, 0, 1 },
-                { 0, 1, 1, 1 },
-                { 1, 1, 0, 1 }
-            };
-            RatsMazeProblem rp = new RatsMazeProblem(4, maze);
-            rp.ConstructPath();
+            //int[,] maze = new[,] {
+            //    { 1, 0, 0, 0 },
+            //    { 1, 1, 0, 1 },
+            //    { 0, 1, 1, 1 },
+            //    { 1, 1, 0, 1 }
+            //};
+            //RatsMazeProblem rp = new RatsMazeProblem(4, maze);
+            //rp.ConstructPath();
+
+            // NQueens
+            //NQueensProblem.FillQueens(8);
+            //NQueensProblem.FillQueens(9);
+            //NQueensProblem.FillQueens(19);
+
+            // Graph coloring problems
+            GraphColoring gc = new GraphColoring(8);
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();
+        }
+
+        static void Main1(string[] args)
+        {
+
+            int b;
+            int first = 5;
+            b = 15;
+            //int ss = Sum(first, 3);
+            //ss = Sum(b, ss);
+            int ss = Anji(b, Anji(first, 3));
+            Console.WriteLine(Anji(b, Anji(first, 3)));
+            Console.ReadKey();
+        }
+
+        static int Anji(int a, int b)
+        {
+
+            Console.WriteLine("In Sum Method");
+            int c = a + b;
+            return c;
         }
     }
 }
